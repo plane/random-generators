@@ -14,6 +14,7 @@
 (require racket/match
          rackunit
          "generic-interface.rkt"
+         "util/struct.rkt"
          "util/with.rkt") 
 
 (require

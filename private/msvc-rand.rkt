@@ -16,6 +16,7 @@
 
 (require rackunit
          "generic-interface.rkt"
+         "util/struct.rkt"
          "util/with.rkt")
 
 (require
