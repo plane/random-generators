@@ -22,6 +22,7 @@
 (require
   (only-in "util/numeric.rkt"
            [add/32-bit +]
+           [multiply/32-bit *]
            shift-right))
 
 (struct msvc-rand ([seed #:mutable])
