@@ -4,9 +4,14 @@
 
 ;; --------------------------------------------------------------------------
 ;;
-;; Based on code by Sebastiano Vigna written in 2015:
+;; Original algorithm from "Fast splittable pseudorandom number generators"
+;; by Guy L. Steele, Doug Lea, and Christine H. Flood.  See:
 ;;
-;; https://prng.di.unimi.it/splitmix64.c
+;;   https://doi.org/10.1145/2660193.2660195 
+;;
+;; This implementation is based on code by Sebastiano Vigna written in 2015:
+;;
+;;   https://prng.di.unimi.it/splitmix64.c
 ;;
 ;; --------------------------------------------------------------------------
 
