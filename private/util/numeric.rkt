@@ -13,7 +13,9 @@
 
 ;; --------------------------------------------------------------------------
 ;;
-;; Utility forms used by individual PRNGs
+;; In Racket, numbers can go well beyond 2^32 or 2^64.  We actually *want*
+;; those limits in the generator algorithms, though.  These functions help
+;; with that.
 ;;
 ;; --------------------------------------------------------------------------
 
