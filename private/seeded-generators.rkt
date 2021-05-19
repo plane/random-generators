@@ -11,10 +11,10 @@
          "current-time.rkt"
          "util/numeric.rkt")
 
-(require "msvc-rand.rkt"
-         "splitmix64.rkt"
-         "xoshiro128++.rkt"
-         "xoshiro256++.rkt")
+(require "generators/msvc-rand.rkt"
+         "generators/splitmix64.rkt"
+         "generators/xoshiro128++.rkt"
+         "generators/xoshiro256++.rkt")
 
 (define (msvc-rand/current-time)
   (msvc-rand (current-milliseconds/32-bit)))

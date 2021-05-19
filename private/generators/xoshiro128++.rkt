@@ -13,12 +13,12 @@
 
 (require racket/match
          rackunit
-         "generic-interface.rkt"
-         "util/struct.rkt"
-         "util/with.rkt")
+         "../generic-interface.rkt"
+         "../util/struct.rkt"
+         "../util/with.rkt")
 
 (require
-  (only-in "util/numeric.rkt"
+  (only-in "../util/numeric.rkt"
            [add/32-bit +]
            [shift-left/32-bit shift-left]
            shift-right))

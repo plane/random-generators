@@ -15,12 +15,12 @@
 ;; --------------------------------------------------------------------------
 
 (require rackunit
-         "generic-interface.rkt"
-         "util/struct.rkt"
-         "util/with.rkt")
+         "../generic-interface.rkt"
+         "../util/struct.rkt"
+         "../util/with.rkt")
 
 (require
-  (only-in "util/numeric.rkt"
+  (only-in "../util/numeric.rkt"
            [add/32-bit +]
            [multiply/32-bit *]
            shift-right))

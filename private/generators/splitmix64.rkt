@@ -4,7 +4,7 @@
 
 ;; --------------------------------------------------------------------------
 ;;
-;; Original algorithm from "Fast splittable pseudorandom number generators"
+;; Original algorithm from "../Fast splittable pseudorandom number generators"
 ;; by Guy L. Steele, Doug Lea, and Christine H. Flood.  See:
 ;;
 ;;   https://doi.org/10.1145/2660193.2660195
@@ -17,12 +17,12 @@
 
 (require rackunit
          threading
-         "generic-interface.rkt"
-         "util/struct.rkt"
-         "util/with.rkt")
+         "../generic-interface.rkt"
+         "../util/struct.rkt"
+         "../util/with.rkt")
 
 (require
-  (only-in "util/numeric.rkt"
+  (only-in "../util/numeric.rkt"
            [add/64-bit +]
            [multiply/64-bit *]
            shift-right))

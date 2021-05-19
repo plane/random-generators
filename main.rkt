@@ -25,10 +25,10 @@
          xoshiro128++
          xoshiro256++)
 
-(require "private/msvc-rand.rkt"
-         "private/splitmix64.rkt" 
-         "private/xoshiro128++.rkt"
-         "private/xoshiro256++.rkt")
+(require "private/generators/msvc-rand.rkt"
+         "private/generators/splitmix64.rkt" 
+         "private/generators/xoshiro128++.rkt"
+         "private/generators/xoshiro256++.rkt")
 
 
 ;; --------------------------------------------------------------------------
@@ -42,7 +42,7 @@
          xoshiro128++/current-time
          xoshiro256++/current-time)
 
-(require "private/seeded.rkt")
+(require "private/seeded-generators.rkt")
 
 
 ;; --------------------------------------------------------------------------
