@@ -1,8 +1,9 @@
 #lang racket/base
 
-(provide get-seed
+(provide random!
+         get-seed
 	 set-seed!
-	 random!)
+         seed-jump)
 
 (provide gen:pseudo-random-number-generator
 	 pseudo-random-number-generator?
@@ -13,6 +14,7 @@
 (require racket/generic)
 
 (define-generics pseudo-random-number-generator
-  (get-seed pseudo-random-number-generator)
+  (get-seed  pseudo-random-number-generator)
   (set-seed! pseudo-random-number-generator new-seed)
-  (random! pseudo-random-number-generator))
+  (seed-jump pseudo-random-number-generator)
+  (random!   pseudo-random-number-generator))

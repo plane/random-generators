@@ -6,9 +6,10 @@
 ;;
 ;; --------------------------------------------------------------------------
 
-(provide get-seed
+(provide random!
+         get-seed
          set-seed!
-         random!)
+         seed-jump)
 
 (provide gen:pseudo-random-number-generator
          pseudo-random-number-generator?

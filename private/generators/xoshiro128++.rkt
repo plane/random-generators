@@ -14,6 +14,7 @@
 (require racket/match
          rackunit
          "../generic-interface.rkt"
+         "../util/apply-values.rkt"
          "../util/struct.rkt"
          "../util/with.rkt")
 
@@ -41,6 +42,31 @@
           (set! s1 i1)
           (set! s2 i2)
           (set! s3 i3)])))
+
+   ;; jump ahead 2^64 values
+   (define (seed-jump this) 
+     (define copy-of-this ; mutate a copy, not the original
+       (struct-copy xoshiro128++ this)) 
+     (with xoshiro128++ copy-of-this
+       (define jump-table #x77f2db5b6fa035c3f542d2d38764000b)
+       (define jump-table-width 128)
+       (apply-values xoshiro128++
+                     (for/fold ([new0 0]
+                                [new1 0]
+                                [new2 0]
+                                [new3 0])
+                               ([bit-num jump-table-width])
+                       (begin0
+                         (if (bitwise-bit-set? jump-table bit-num)
+                                   (values (bitwise-xor new0 s0)
+                                           (bitwise-xor new1 s1)
+                                           (bitwise-xor new2 s2)
+                                           (bitwise-xor new3 s3))
+                                   (values new0
+                                           new1
+                                           new2
+                                           new3))
+                         (random! copy-of-this))))))
 
    (define (random! this)
      (with xoshiro128++ this
@@ -74,4 +100,18 @@
                       2179746616
                       1031713641
                       1850081078
-                      724899641)))
+                      724899641))
+  (define jumped (seed-jump prng))
+  (check-equal? (for/list ([i 10])
+                  (random! jumped))
+                (list 199074115
+                      2797948254
+                      2204260840
+                      20869236
+                      221397048
+                      1490129443
+                      501366263
+                      1514137670
+                      4154120006
+                      2588889898)))
+
