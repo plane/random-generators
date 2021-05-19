@@ -1,9 +1,12 @@
 #lang racket/base
 
+(provide get-seed
+	 set-seed!
+	 random!)
+
 (provide gen:pseudo-random-number-generator
-         get-seed
-         set-seed!
-         random!)
+	 pseudo-random-number-generator?
+	 pseudo-random-number-generator/c)
 
 ;; --------------------------------------------------------------------------
 

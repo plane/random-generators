@@ -6,10 +6,13 @@
 ;;
 ;; --------------------------------------------------------------------------
 
-(provide gen:pseudo-random-number-generator
-         get-seed
+(provide get-seed
          set-seed!
          random!)
+
+(provide gen:pseudo-random-number-generator
+         pseudo-random-number-generator?
+         pseudo-random-number-generator/c)
 
 (require "private/generic-interface.rkt")
 
