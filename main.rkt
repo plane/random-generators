@@ -49,6 +49,7 @@
 ;;
 ;; Utility function to help with seeding RNGs with 32-bit state values
 ;;
+;; --------------------------------------------------------------------------
 
 (provide current-milliseconds/32-bit)
 
