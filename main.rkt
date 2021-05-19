@@ -53,5 +53,5 @@
 
 (provide current-milliseconds/32-bit)
 
-(require "private/current-time.rkt")
+(require "private/util/current-time.rkt")
 

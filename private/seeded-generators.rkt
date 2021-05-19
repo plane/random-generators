@@ -8,7 +8,7 @@
 ;; --------------------------------------------------------------------------
 
 (require "generic-interface.rkt"
-         "current-time.rkt"
+         "util/current-time.rkt"
          "util/numeric.rkt")
 
 (require "generators/msvc-rand.rkt"
