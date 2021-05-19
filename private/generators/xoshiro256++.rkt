@@ -45,17 +45,20 @@
 
    ;; jump ahead 2^128 values
    (define (seed-jump this)
+     
+     (define jump-table #x39abdc4529b1661ca9582618e03fc9aad5a61266f0c9392c180ec6d33cfd0aba)
+     (define jump-table-bits (integer-length jump-table))
+       
      (define copy-of-this ; mutate a copy, not the original
        (struct-copy xoshiro256++ this))
+     
      (with xoshiro256++ copy-of-this
-       (define jump-table #x39abdc4529b1661ca9582618e03fc9aad5a61266f0c9392c180ec6d33cfd0aba)
-       (define jump-table-width 256)
        (apply-values xoshiro256++
                      (for/fold ([new0 0]
                                 [new1 0]
                                 [new2 0]
                                 [new3 0])
-                               ([bit-num jump-table-width])
+                               ([bit-num jump-table-bits])
                        (begin0
                          (if (bitwise-bit-set? jump-table bit-num)
                                    (values (bitwise-xor new0 s0)
