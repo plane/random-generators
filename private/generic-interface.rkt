@@ -2,12 +2,12 @@
 
 (provide random!
          get-seed
-	 set-seed!
+         set-seed!
          seed-jump)
 
 (provide gen:pseudo-random-number-generator
-	 pseudo-random-number-generator?
-	 pseudo-random-number-generator/c)
+         pseudo-random-number-generator?
+         pseudo-random-number-generator/c)
 
 ;; --------------------------------------------------------------------------
 

@@ -61,14 +61,14 @@
                                ([bit-num jump-table-bits])
                        (begin0
                          (if (bitwise-bit-set? jump-table bit-num)
-                                   (values (bitwise-xor new0 s0)
-                                           (bitwise-xor new1 s1)
-                                           (bitwise-xor new2 s2)
-                                           (bitwise-xor new3 s3))
-                                   (values new0
-                                           new1
-                                           new2
-                                           new3))
+                             (values (bitwise-xor new0 s0)
+                                     (bitwise-xor new1 s1)
+                                     (bitwise-xor new2 s2)
+                                     (bitwise-xor new3 s3))
+                             (values new0
+                                     new1
+                                     new2
+                                     new3))
                          (random! copy-of-this))))))
 
    (define (random! this)
