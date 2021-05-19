@@ -7,7 +7,7 @@
 ;; Original algorithm from "Fast splittable pseudorandom number generators"
 ;; by Guy L. Steele, Doug Lea, and Christine H. Flood.  See:
 ;;
-;;   https://doi.org/10.1145/2660193.2660195 
+;;   https://doi.org/10.1145/2660193.2660195
 ;;
 ;; This implementation is based on code by Sebastiano Vigna written in 2015:
 ;;
@@ -19,7 +19,7 @@
          threading
          "generic-interface.rkt"
          "util/struct.rkt"
-         "util/with.rkt") 
+         "util/with.rkt")
 
 (require
   (only-in "util/numeric.rkt"

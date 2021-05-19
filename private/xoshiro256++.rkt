@@ -4,7 +4,7 @@
 
 ;; --------------------------------------------------------------------------
 ;;
-;; A high quality generator created by David Blackman and Sebastiano Vigna 
+;; A high quality generator created by David Blackman and Sebastiano Vigna
 ;; in 2019, based on the source code linked below:
 ;;
 ;; https://prng.di.unimi.it/xoshiro256plusplus.c
@@ -42,7 +42,7 @@
           (set! s2 i2)
           (set! s3 i3)])))
 
-   (define (random! this)     
+   (define (random! this)
      (with xoshiro256++ this
        (define result (+ s0 (rotate-left (+ s0 s3) 23)))
        (define t (shift-left s1 17))
@@ -66,7 +66,7 @@
   (check-equal? (for/list ([i 10])
                   (random! prng))
                 (list 8730184168495619804
-                      13325717367847442677 
+                      13325717367847442677
                       11685827732425745907
                       5917460415815047405
                       7392855844041603889

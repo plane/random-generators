@@ -4,7 +4,7 @@
 
 ;; --------------------------------------------------------------------------
 ;;
-;; A high quality generator created by David Blackman and Sebastiano Vigna 
+;; A high quality generator created by David Blackman and Sebastiano Vigna
 ;; in 2019, based on the source code linked below:
 ;;
 ;; https://prng.di.unimi.it/xoshiro128plusplus.c
@@ -15,7 +15,7 @@
          rackunit
          "generic-interface.rkt"
          "util/struct.rkt"
-         "util/with.rkt") 
+         "util/with.rkt")
 
 (require
   (only-in "util/numeric.rkt"
