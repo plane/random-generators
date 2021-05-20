@@ -14,3 +14,4 @@
 (define-syntax-rule (struct id (expr ...) kw ...)
   (serializable-struct id (expr ...) kw ...
                        #:transparent))
+

@@ -15,3 +15,4 @@
   (let ()
     (struct-define type id)
     (begin expr ...)))
+
