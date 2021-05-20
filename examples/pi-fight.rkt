@@ -11,7 +11,7 @@
          random-generators
          threading
          "util/for-count.rkt"
-         "util/proc-to-name.rkt")
+         "util/procedure-to-name.rkt")
 
 (define (in-quarter-circle? x y)
   (< (+ (* x x)
