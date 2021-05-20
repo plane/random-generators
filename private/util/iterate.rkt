@@ -1,10 +1,10 @@
 #lang racket/base
 
-(provide apply-repeatedly)
+(provide iterate)
 
 ;; --------------------------------------------------------------------------
 ;;
-;; `apply-repeatedly`
+;; `iterate`
 ;;
 ;; Make a list with n entries, with elements:
 ;;
@@ -20,9 +20,13 @@
 ;;
 ;; --------------------------------------------------------------------------
 
-(define (apply-repeatedly f x n)
-  (reverse
-    (for/fold ([acc (list x)])
-              ([_ (sub1 n)])
-      (cons (f (car acc)) acc))))
+(require rackunit
+         srfi/41)
 
+(define (iterate f x n)
+  (stream->list n (stream-iterate f x)))
+
+(module+ test
+  (define (sqr x) (* x x))
+  (check-equal? (iterate sqr 2 6)
+                (list 2 4 16 256 65536 4294967296)))

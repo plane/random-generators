@@ -5,11 +5,11 @@
 ;; --------------------------------------------------------------------------
 
 (require "generic-interface.rkt"
-	 "util/apply-repeatedly.rkt")
+         "util/iterate.rkt")
 
 (define (make-jump-generator-list generator 
                                   repeat-num)
-  (apply-repeatedly seed-jump
-                    generator 
-                    repeat-num))
+  (iterate seed-jump
+           generator 
+           repeat-num))
 
