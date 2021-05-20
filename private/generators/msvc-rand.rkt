@@ -36,6 +36,9 @@
      (with msvc-rand this
        (set! seed new-seed)))
 
+   (define (rand-max this) 
+     32767)
+
    (define (random! this)
      (with msvc-rand this
        (set! seed (+ 2531011 (* 214013 seed)))

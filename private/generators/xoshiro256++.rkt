@@ -43,6 +43,9 @@
           (set! s2 i2)
           (set! s3 i3)])))
 
+   (define (rand-max this) 
+     18446744073709551615)
+
    ;; jump ahead 2^128 values
    (define (seed-jump this)
      

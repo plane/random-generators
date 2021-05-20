@@ -1,0 +1,40 @@
+#lang racket/base
+
+;; --------------------------------------------------------------------------
+;;
+;; Estimate pi using Monte Carlo, inaccurately and slowly
+;;
+;; --------------------------------------------------------------------------
+
+(require "../main.rkt")
+
+(define (in-quarter-circle? x y)
+  (< (+ (* x x)
+        (* y y))
+     1))
+
+(define (count-dots-in-quarter-circle trial-num)
+  (define rng (xoshiro128++/current-time))
+  (for/fold ([dots-in 0])
+            ([_ trial-num])
+    (if (in-quarter-circle? (random-real! rng)
+                            (random-real! rng))
+      (add1 dots-in)
+      dots-in)))
+
+(define (estimate-pi trial-num)
+  (define dots-in-quarter-circle
+    (count-dots-in-quarter-circle trial-num))
+
+  (define ratio-in-quarter-circle
+    (/ dots-in-quarter-circle trial-num))
+
+  (define ratio-in-circle
+    (* 4 ratio-in-quarter-circle))
+
+  (exact->inexact ratio-in-circle))
+
+(module+ main
+  (define trial-num 10000000)
+  (estimate-pi trial-num))
+

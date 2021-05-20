@@ -38,6 +38,9 @@
      (with splitmix64 this
        (set! seed new-seed)))
 
+   (define (rand-max this) 
+     18446744073709551615)
+
    (define (random! this)
      (with splitmix64 this
        (set! seed (+ seed #x9e3779b97f4a7c15))
