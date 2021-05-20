@@ -1,4 +1,4 @@
-#lang racket/base
+#lang at-exp racket/base
 
 ;; --------------------------------------------------------------------------
 ;;
@@ -6,37 +6,70 @@
 ;;
 ;; --------------------------------------------------------------------------
 
-(require "../main.rkt")
-
-(define-syntax-rule 
-  (for/count (for-clause ...)
-     body-or-break ...
-     body)
-  (for/sum (for-clause ...)
-     body-or-break ...
-     (if body 1 0)))
+(require racket/list
+         racket/math
+         random-generators
+         threading
+         "util/for-count.rkt"
+         "util/proc-to-name.rkt")
 
 (define (in-quarter-circle? x y)
   (< (+ (* x x)
         (* y y))
      1))
 
-(define (count-dots-in-quarter-circle trial-num)
-  (define rng (xoshiro128++/current-time))
-  (for/count ([_ trial-num])
-    (in-quarter-circle? (random-real! rng)
-                        (random-real! rng))))
+(define (count-dots-in-quarter-circle generator trials)
+  (for/count ([_ trials])
+             (in-quarter-circle? (random-real! generator)
+                                 (random-real! generator))))
 
-(define (estimate-pi trial-num)
-  (define dots-in-quarter-circle
-    (count-dots-in-quarter-circle trial-num))
-  (define ratio-in-quarter-circle
-    (/ dots-in-quarter-circle trial-num))
-  (define ratio-in-circle
-    (* 4 ratio-in-quarter-circle))
-  (exact->inexact ratio-in-circle))
+(define (estimate-pi generator trials)
+  (~> (count-dots-in-quarter-circle generator trials)
+      (/ trials)
+      (* 4)
+      (exact->inexact)))
+
+;; --------------------------------------------------------------------------
 
 (module+ main
-  (define trial-num 10000000)
-  (estimate-pi trial-num))
+  (define trials 1000000)
+  (define all-generators (list msvc-rand/current-time
+                               splitmix64/current-time
+                               xoshiro128++/current-time
+                               xoshiro256++/current-time))
+  
+  (printf @string-append{
 
+       RNG fight!  Which one will win?
+
+    })
+
+  (define results 
+    (for/list ([generator all-generators])
+      (define generator-name (procedure->name generator))
+      (define estimated-pi (estimate-pi (generator) trials))
+      (define error (abs (- estimated-pi pi)))
+      (printf @string-append{
+
+            Generator: ~a
+            Estimated: ~a
+                Error: ~a
+
+        } generator-name estimated-pi error)
+      (hash 'generator-name generator-name
+            'estimated-pi   estimated-pi
+            'error          error)))
+
+  (define winner
+    (argmin (λ (result)
+              (hash-ref result 'error))
+            results))
+
+  (define winner-name
+    (hash-ref winner 'generator-name))
+
+  (printf @string-append{
+
+        And the winner is . . . ~a!  Congratulations, ~a!
+
+    } winner-name winner-name))
