@@ -24,6 +24,6 @@
   [(this min max) (random-integer!* this min max)])
 
 (define (random-integer!* this min max)
-  (exact-truncate
+  (exact-floor
     (random-real! this min max)))
 
