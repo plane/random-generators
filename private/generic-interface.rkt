@@ -15,9 +15,9 @@
 (require racket/generic)
 
 (define-generics pseudo-random-number-generator
-  (random!           pseudo-random-number-generator) 
-  (rand-max          pseudo-random-number-generator) 
-  (get-seed          pseudo-random-number-generator)
-  (set-seed!         pseudo-random-number-generator new-seed)
-  (seed-jump         pseudo-random-number-generator))
+  (random!   pseudo-random-number-generator) 
+  (rand-max  pseudo-random-number-generator) 
+  (get-seed  pseudo-random-number-generator)
+  (set-seed! pseudo-random-number-generator new-seed)
+  (seed-jump pseudo-random-number-generator))
 
