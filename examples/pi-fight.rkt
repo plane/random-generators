@@ -40,7 +40,7 @@
   
   (printf @string-append{
 
-       RNG fight!  Which one will win?
+       Pi fight!  Which PRNG will win?
 
     })
 
