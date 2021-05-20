@@ -37,6 +37,6 @@
   (exact->inexact ratio-in-circle))
 
 (module+ main
-  (define trial-num 100000)
+  (define trial-num 10000000)
   (estimate-pi trial-num))
 
