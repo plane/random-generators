@@ -18,6 +18,9 @@
 ;; used in parallel, using the `jump-seed` function (which skips ahead by
 ;; a large number of values in a PRNG sequence).
 ;;
+;; This implementation uses srfi-41 streams instead of `racket/stream`
+;; because `stream-iterate` is missing from the Racket library.
+;;
 ;; --------------------------------------------------------------------------
 
 (require rackunit
