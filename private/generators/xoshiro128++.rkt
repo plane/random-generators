@@ -37,11 +37,10 @@
    (define (set-seed! this new-seed)
      (with xoshiro128++ this
        (match new-seed
-         [(list i0 i1 i2 i3)
-          (set! s0 i0)
-          (set! s1 i1)
-          (set! s2 i2)
-          (set! s3 i3)])))
+         [(list i0 i1 i2 i3) (set! s0 i0)
+                             (set! s1 i1)
+                             (set! s2 i2)
+                             (set! s3 i3)])))
 
    (define (rand-max this) 
      4294967295)
