@@ -15,8 +15,7 @@
 ;;
 ;; --------------------------------------------------------------------------
 
-(require rackunit
-         threading
+(require threading
          "../generic-interface.rkt"
          "../util/struct.rkt"
          "../util/with.rkt")
@@ -55,6 +54,7 @@
   (bitwise-xor value (shift-right value bits)))
 
 (module+ test
+  (require rackunit)
   (define prng (splitmix64 12345678))
   (check-equal? (for/list ([i 10])
                   (random! prng))

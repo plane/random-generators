@@ -12,3 +12,7 @@
 (define-syntax-rule (apply-values function values)
   (call-with-values (lambda () values) function))
 
+(module+ test
+  (require rackunit)
+  (check-equal? (apply-values + (values 1 2 3 4 5))
+                15))

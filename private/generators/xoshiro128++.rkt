@@ -12,7 +12,6 @@
 ;; --------------------------------------------------------------------------
 
 (require racket/match
-         rackunit
          "../generic-interface.rkt"
          "../util/apply-values.rkt"
          "../util/struct.rkt"
@@ -90,6 +89,7 @@
                (shift-right x (- 32 k))))
 
 (module+ test
+  (require rackunit)
   (define prng (xoshiro128++ 123456789
                              234567890
                              345678901

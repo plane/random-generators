@@ -14,8 +14,7 @@
 ;;
 ;; --------------------------------------------------------------------------
 
-(require rackunit
-         "../generic-interface.rkt"
+(require "../generic-interface.rkt"
          "../util/struct.rkt"
          "../util/with.rkt")
 
@@ -45,6 +44,7 @@
        (bitwise-and #x7FFF (shift-right seed 16))))))
 
 (module+ test
+  (require rackunit)
   (define prng (msvc-rand 123456789))
   (check-equal? (for/list ([i 10])
                   (random! prng))

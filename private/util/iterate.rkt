@@ -23,13 +23,13 @@
 ;;
 ;; --------------------------------------------------------------------------
 
-(require rackunit
-         srfi/41)
+(require srfi/41)
 
 (define (iterate f x n)
   (stream->list n (stream-iterate f x)))
 
 (module+ test
+  (require rackunit)
   (define (sqr x) (* x x))
   (check-equal? (iterate sqr 2 6)
                 (list 2 4 16 256 65536 4294967296)))
